@@ -1,0 +1,280 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href=""> -->
+</head>
+<style>
+    * {
+        margin: 0;
+        border: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-image: linear-gradient(to right, yellow, orange);
+    }
+
+    p {
+        font-family: sans-serif;
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 2%;
+        text-shadow: 4px 3px rgba(146, 142, 142, 0.815);
+    }
+
+    .main {
+        height: 380px;
+        width: 380px;
+        display: inline;
+        display: block;
+        margin: auto;
+        margin-top: 5%;
+    }
+
+    .row {
+        height: 120px;
+        width: 360px;
+        display: flex;
+        margin-top: 4px;
+    }
+
+    #a,
+    #b,
+    #C,
+    #d,
+    #e,
+    #f,
+    #g,
+    #h,
+    #i {
+        height: 120px;
+        width: 120px;
+        /*border: 1px solid black;*/
+        text-align: center;
+        line-height: 120px;
+        font-size: 4rem;
+        font-weight: bold;
+        font-family: sans-serif;
+        background-color: cornsilk;
+        margin-left: 4px;
+        box-shadow: 3px 3px rgb(95, 93, 93);
+
+    }
+
+    #a:hover,
+    #b:hover,
+    #C:hover,
+    #d:hover,
+    #e:hover,
+    #f:hover,
+    #g:hover,
+    #h:hover,
+    #i:hover {
+        height: 123px;
+        width: 123px;
+        background-color: azure;
+    }
+
+    .submit {
+        height: 50px;
+        width: 360px;
+        font-size: large;
+        font-weight: bold;
+        display: block;
+        margin: auto;
+        margin-top: 2%;
+        background-color: rgb(11, 105, 11);
+        color: white;
+    }
+</style>
+
+<body>
+    <p>3x3 Magic Square</p>
+    <div class="main">
+        <div class="row">
+            <input type="text" id="a" onclick="normal()">
+            <input type="text" id="b" onclick="normal()">
+            <input type="text" id="c" onclick="normal()">
+        </div>
+
+        <div class="row">
+            <input type="text" id="d" onclick="normal()">
+            <input type="text" id="e" onclick="normal()">
+            <input type="text" id="f" onclick="normal()">
+        </div>
+
+        <div class="row">
+            <input type="text" id="g" onclick="normal()">
+            <input type="text" id="h" onclick="normal()">
+            <input type="text" id="i" onclick="normal()">
+        </div>
+    </div>
+    <button class="submit" onclick="myfunction()">Submit</button>
+
+    <script type="text/javascript">
+
+        values = [];
+
+        var a = document.getElementById("a");
+        var b = document.getElementById("b");
+        var c = document.getElementById("c");
+        var d = document.getElementById("d");
+        var e = document.getElementById("e");
+        var f = document.getElementById("f");
+        var g = document.getElementById("g");
+        var h = document.getElementById("h");
+        var i = document.getElementById("i");
+
+        function myfunction() {
+            var aa = parseInt(a.value);
+            values.push(aa);
+
+            var bb = parseInt(b.value);
+            values.push(bb);
+
+            var cc = parseInt(c.value);
+            values.push(cc);
+
+            var dd = parseInt(d.value);
+            values.push(dd);
+
+            var ee = parseInt(e.value);
+            values.push(ee);
+
+            var ff = parseInt(f.value);
+            values.push(ff);
+
+            var gg = parseInt(g.value);
+            values.push(gg);
+
+            var hh = parseInt(h.value);
+            values.push(hh);
+
+            var ii = parseInt(i.value);
+            values.push(ii);
+
+            if (check_duplicate(values)==0){
+                if (aa + bb + cc == 15) {
+                    if (dd + ee + ff == 15) {
+                        if (gg + hh + ii == 15) {
+                            if (aa + ee + ii == 15) {
+                                if (cc + ff + ii == 15) {
+                                    if (bb + ee + hh == 15) {
+                                        if (aa + dd + gg == 15) {
+                                            if (cc + ee + gg == 15) {
+                                                alert("CONGRATULATION..! YOU DID IT...");
+                                                a.style.backgroundColor = 'rgba(52, 232, 32, 0.957)';
+                                                b.style.backgroundColor = 'rgba(52, 232, 32, 0.957)';
+                                                c.style.backgroundColor = 'rgba(52, 232, 32, 0.957)';
+                                                d.style.backgroundColor = 'rgba(52, 232, 32, 0.957)';
+                                                e.style.backgroundColor = 'rgba(52, 232, 32, 0.957)';
+                                                f.style.backgroundColor = 'rgba(52, 232, 32, 0.957)';
+                                                g.style.backgroundColor = 'rgba(52, 232, 32, 0.957)';
+                                                h.style.backgroundColor = 'rgba(52, 232, 32, 0.957)';
+                                                i.style.backgroundColor = 'rgba(52, 232, 32, 0.957)';
+
+                                            } else {
+                                                c.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                                e.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                                g.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                                alert("sum of the diagonal 2 values is not 15.");
+                                            };
+                                        } else {
+                                            a.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                            d.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                            g.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                            alert("sum of the adjacent 7 values is not 15.");
+                                        };
+                                    } else {
+                                        b.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                        e.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                        h.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                        alert("sum of the adjacent 6 values is not 15.");
+                                    };
+                                } else {
+                                    c.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                    f.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                    i.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                                    alert("sum of the adjacent 5 values is not 15.");
+                                };
+                            } else {
+                                a.style.backgroundColor == 'rgba(224, 65, 65, 0.877)';
+                                e.style.backgroundColor == 'rgba(224, 65, 65, 0.877)';
+                                i.style.backgroundColor == 'rgba(224, 65, 65, 0.877)';
+                                alert("sum of the diagonal 1 values is not 15.");
+                            };
+                        } else {
+                            g.style.backgroundColor == 'rgba(224, 65, 65, 0.877)';
+                            h.style.backgroundColor == 'rgba(224, 65, 65, 0.877)';
+                            i.style.backgroundColor == 'rgba(224, 65, 65, 0.877)';
+                            alert("sum of the adjacent 3 values is not 15.");
+                        };
+                    } else {
+                        d.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                        e.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                        f.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                        alert("sum of the adjacent 2 values is not 15.");
+                    };
+                } else {
+                    a.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                    b.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                    c.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                    alert("sum of the adjacent 1 values is not 15.");
+                };
+            } else {
+                alert("values are repeated..!");
+                a.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                b.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                c.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                d.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                e.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                f.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                g.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                h.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+                i.style.backgroundColor = 'rgba(224, 65, 65, 0.877)';
+            }
+
+        };
+        function normal() {
+            a.style.backgroundColor = 'cornsilk';
+            b.style.backgroundColor = 'cornsilk';
+            c.style.backgroundColor = 'cornsilk';
+            d.style.backgroundColor = 'cornsilk';
+            e.style.backgroundColor = 'cornsilk';
+            f.style.backgroundColor = 'cornsilk';
+            g.style.backgroundColor = 'cornsilk';
+            h.style.backgroundColor = 'cornsilk';
+            i.style.backgroundColor = 'cornsilk';
+        };
+        function check_duplicate(a) {
+            p = 0;
+            for (k = 0; k < a.length; k++) {
+                for (j = k + 1; j < a.length; j++) {
+                    if (a[k] == a[j]) {
+                        p = 1;
+                        break;
+                    }
+                }
+                if (p == 1) { break; };
+
+            }
+            if (p == 1) {
+                console.log("duplicate..");
+                return 1;
+            } else {
+                console.log("not dupli");
+                return 0;
+            }
+
+        };
+
+    </script>
+</body>
+
+</html>
